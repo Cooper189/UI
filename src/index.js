@@ -6,8 +6,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider} from 'react-redux';
 import * as store from './store';
-import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch, Redirect, Link} from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
 
 const setStore = store.default({})
 

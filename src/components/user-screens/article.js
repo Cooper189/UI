@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { addToArticle } from '../../action/add_article';
-import { Route} from 'react-router-dom';
-import axios from 'axios';
+import { Link} from 'react-router-dom';
+import axios from 'axios'
 
 class Article extends Component {
     constructor() {
@@ -12,7 +12,10 @@ class Article extends Component {
         }
     }
     componentDidMount() {
-        axios.get('api/records/', {
+        this.componentData
+    }
+    get componentData() {
+       axios.get('api/records/', {
             params: {
                 userId: this.props.user.data.userId
             }
@@ -24,11 +27,7 @@ class Article extends Component {
             })
         }).catch((err) => {
             console.log(err.response.data);
-        })
-    }
-    getTime(milisec) {
-        let time = new Date(milisec);
-        return time.toString();
+        }) 
     }
     get header() {
         return <thead>
@@ -40,23 +39,35 @@ class Article extends Component {
                 </tr>
             </thead>
     }
+    getTime(milisec) {
+        let time = new Date(milisec);
+        return time.toString();
+    }
+    delete(args) {
+        axios.delete('/api/records/single/', {data: {recordId: args}}).then((res) => {
+            this.componentData
+        })
+    }
     render() {
         return (
-            <div className="col-9">
-                <table className="table table-dark">
-                    {this.header}
-                    <tbody>
-                        {this.state.articles.map((item, index) => {
-                            return <tr key={index}>
-                                <th scope="row">{index + 1}</th>
-                                <td>{item.title}</td>
-                                <td>{this.getTime(item.startDate)}</td>
-                                <td>@mdo</td>
-                            </tr>
-                        })}
-                    </tbody>
-                </table>
-            </div>
+             <div className="col-9">
+             <table className="table table-dark">
+                 {this.header}
+                 <tbody>
+                     {this.state.articles.map((item, index) => {
+                         return <tr key={index}>
+                         <th scope="row">{index + 1}</th>
+                         <td>{item.title}</td>
+                         <td>{this.getTime(item.startDate)}</td>
+                         <td>
+                             <Link to={`user/record/${item.recordId}`}>{item.recordId}</Link>
+                             <button type="button" onClick={this.delete.bind(this, item.recordId)}>Delete</button>
+                         </td>
+                     </tr>
+                     })}
+                 </tbody>
+             </table>
+         </div>
         )
     }
 }

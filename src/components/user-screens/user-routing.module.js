@@ -4,7 +4,8 @@ import Article from './article';
 import Creator from './creator';
 import { connect } from 'react-redux';
 import { Redirect} from 'react-router-dom';
-import MainMenu from '../menu'
+import SingleRecord from './singleRecord';
+import MainMenu from '../menu';
 
 
 const NestedView = ({ match, login }) => {
@@ -13,11 +14,12 @@ const NestedView = ({ match, login }) => {
       <div>
         <MainMenu />
         <Route exact path={match.url} component={Article}/>
-        <Route path={`${match.url}/info`} component={Creator}/>
+        <Route path={`${match.url}/record/:recordId`} component={SingleRecord}/>
+        <Route path={`${match.url}/create`} component={Creator}/>
       </div>
     )
   } else {
-  return (<Redirect to="/" />);
+    return (<Redirect to="/login" />);
   }
   
 };

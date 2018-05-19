@@ -18,7 +18,7 @@ class Authorization extends Component {
     }
     render() {
         if (this.props.user.data) {
-            return (<Redirect to="/art" />)
+            return (<Redirect to="/user" />)
         }
         return (
             <div>
