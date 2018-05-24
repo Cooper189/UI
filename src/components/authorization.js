@@ -23,24 +23,24 @@ class Authorization extends Component {
         return (
             <div>
                 <div className="container">
-                <div className="row justify-content-md-center">
-                <div class="form-group row">
-                    <label className="col-2 col-form-label">Login</label>
-                    <div className="col-10">
-                        <input className="form-control" type="text" ref={(input) => this._login = input} />
+                    <div className="row justify-content-md-center">
+                        <div class="form-group row">
+                            <label className="col-2 col-form-label">Login</label>
+                            <div className="col-10">
+                                <input className="form-control" type="text" ref={(input) => this._login = input} />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label className="col-2 col-form-label">Pass</label>
+                            <div className="col-10">
+                                <input className="form-control" type="password" ref={(input) => this._pass = input} />
+                            </div>
+                        </div>
+                        {this.props.user.err ? <div class="alert alert-danger" role="alert">
+                                <strong>Oh snap!</strong> {this.props.user.err}
+                            </div> : null}
+                        <button type="button" className="btn btn-primary" onClick={this.checkAdd.bind(this)}>Primary</button>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label className="col-2 col-form-label">Pass</label>
-                    <div className="col-10">
-                        <input className="form-control" type="password" ref={(input) => this._pass = input} />
-                    </div>
-                </div>
-                {this.props.user.err ? <div class="alert alert-danger" role="alert">
-                        <strong>Oh snap!</strong> {this.props.user.err}
-                    </div> : null}
-                <button type="button" className="btn btn-primary" onClick={this.checkAdd.bind(this)}>Primary</button>
-                </div>
                 </div>
             </div>
         )
