@@ -14,17 +14,12 @@ class MainPage extends Component {
     componentDidMount() {
         axios.get('api/records/all/').then((response) => {
             this.props.add(response.data, this.screenId);
-        }).catch((err) => {
-            console.log(err.response.data);
-        }) 
-    }
-    testMethod(...arg){
-        console.log('test', this, arg);
+        })
     }
     render() {
         return (
             <div>
-                <Grid screenId={this.screenId} method={this.testMethod.bind(this)}></Grid>
+                <Grid screenId={this.screenId}></Grid>
             </div>
         )
     }

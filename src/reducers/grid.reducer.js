@@ -1,14 +1,14 @@
 export default (state={}, grid) => {
     switch(grid.type) {
         case 'ADD_GRID_DATA':
-            const send = {...state}
-            send[grid.screenId] = grid.item
-            return send
+            const send = {...state};
+            send[grid.screenId] = grid.item;
+            return send;
         case 'DELETE':
-            const sendItem = {...state}
-            sendItem[grid.screenId] = grid.item
-            return sendItem
+            const sendItem = {...state};
+            sendItem[grid.screenId] = {};
+            return sendItem;
         default:
-            return state
+            return state;
     }
 }

@@ -6,7 +6,7 @@ import axios from 'axios';
 
 class MainMenu extends Component {
     componentDidMount() {
-        axios.get('api/test/').then((menu) => {
+        axios.get('/api/test/').then((menu) => {
             this.props.add(menu.data); 
         })
     }

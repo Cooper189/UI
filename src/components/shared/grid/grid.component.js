@@ -33,14 +33,11 @@ class Grid extends Component {
                         <td>{item.title}</td>
                         <td>{this.getTime(item.startDate)}</td>
                         <td>
-                        {   // TODO delete after actions will finish
-                            // <div>
-                            //     <button onClick={() => this.props.method(item.title)}>sdf</button>
-                            // </div>
+                        {   
                             this.props.flag ? <span>
                                 <Link to={`user/record/${item.recordId}`}>{item.recordId}</Link>
                                 <Delete name={'Delete'} screenId={this.props.screenId} recordId={item.recordId}></Delete>
-                            </span> : null
+                            </span> : item.userName
                         }
                         </td>
                     </tr>

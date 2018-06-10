@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { addUser } from '../action/user';
-import { Redirect} from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 class Authorization extends Component {
     checkAdd() {
@@ -24,22 +24,23 @@ class Authorization extends Component {
             <div>
                 <div className="container">
                     <div className="row justify-content-md-center">
-                        <div class="form-group row">
+                        <div className="form-group row">
                             <label className="col-2 col-form-label">Login</label>
                             <div className="col-10">
                                 <input className="form-control" type="text" ref={(input) => this._login = input} />
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div className="form-group row">
                             <label className="col-2 col-form-label">Pass</label>
                             <div className="col-10">
                                 <input className="form-control" type="password" ref={(input) => this._pass = input} />
                             </div>
                         </div>
-                        {this.props.user.err ? <div class="alert alert-danger" role="alert">
+                        {this.props.user.err ? <div className="alert alert-danger" role="alert">
                                 <strong>Oh snap!</strong> {this.props.user.err}
-                            </div> : null}
+                            </div> : null }
                         <button type="button" className="btn btn-primary" onClick={this.checkAdd.bind(this)}>Primary</button>
+                        <Link to={'/registration'}>Go to registration</Link>
                     </div>
                 </div>
             </div>

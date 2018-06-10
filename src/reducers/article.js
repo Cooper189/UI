@@ -1,4 +1,4 @@
-export default (state = ['hello'], payload) => {
+export default (state = [], payload) => {
     switch(payload.type) {
         case 'add':
             return [...state, payload.item];
